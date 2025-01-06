@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const delius = Delius({
-    weight: '400', // or specify the weights you need
+    weight: '400',
     subsets: ['latin'],
 });
 
@@ -16,12 +16,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en" className={delius.className}>
-        <body>
-        <div className="main-content">
-            <Navbar />
+        <body className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-grow mt-32">
             {children}
-            <Footer />
-        </div>
+        </main>
+        <Footer />
         </body>
         </html>
     );

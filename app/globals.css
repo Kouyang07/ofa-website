@@ -2,7 +2,7 @@
 
 :root {
   --background: white; /* Match this with your tailwind.config.js */
-  --foreground: white; /* Match this with your tailwind.config.js */
+  --foreground: black; /* Match this with your tailwind.config.js */
   --font-delius: 'Delius', cursive; /* Match this with your tailwind.config.js */
 }
 

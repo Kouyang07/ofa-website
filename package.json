@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "marked": "^15.0.5",
     "next": "15.1.3",
     "react": "^19.0.0",
     "react-icons": "^5.4.0",
-    "react-router-dom": "^7.1.1"
+    "react-router-dom": "^7.1.1",
+    "react-syntax-highlighter": "^15.6.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
