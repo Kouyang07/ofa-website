@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         <html lang="en" className={delius.className}>
         <body className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-grow mt-32">
+        <main className="flex-grow mt-28">
             {children}
         </main>
         <Footer />
