@@ -1,36 +1,49 @@
-import StoriesFilter from "@/components/stories/StoriesFilter";
-import StoriesCard from "@/components/stories/StoriesCard";
-import { blogPosts } from "@/data";
+// app/(or pages)/index.tsx (Next.js 13+ in the app directory, or pages/index.tsx in older versions)
+import Link from "next/link";
+import { createClient } from "next-sanity";
+import {client} from "@/sanity/client";
 
 export const runtime = "edge";
 
-export default function StoriesPage() {
-    return (
-        <div className="container mx-auto px-4 py-12">
-            {/* Title Section */}
-            <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold mb-4 text-green-600">Stories of How One4All Foundation Helped Elders</h1>
-                <p className="text-gray-600">
-                    Discover heartwarming stories of how the One4All Foundation has made a difference in the lives of elders.
-                </p>
-            </div>
+const POSTS_QUERY = `*[
+  _type == "post"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{
+  _id, 
+  title, 
+  slug, 
+  publishedAt
+}`;
 
-            {/* Main Content with Sidebar */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                {/* Sidebar */}
-                <div className="md:col-span-1">
-                    <StoriesFilter />
-                </div>
+const revalidateOptions = { next: { revalidate: 30 } };
 
-                {/* Blog List */}
-                <div className="md:col-span-3">
-                    <div className="grid gap-6">
-                        {blogPosts.map((post) => (
-                            <StoriesCard key={post.id} post={post} />
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+export default async function IndexPage() {
+    try {
+        // For Edge, we rely on the built-in fetch from the environment.
+        // next-sanity's 'createClient' respects this if we provide `fetch`.
+        const posts = await client.fetch(POSTS_QUERY, {}, revalidateOptions);
+
+        return (
+            <main className="container mx-auto min-h-screen max-w-3xl p-8">
+                <h1 className="text-4xl font-bold mb-8">Posts</h1>
+                <ul className="flex flex-col gap-y-4">
+                    {posts.map((post, any) => (
+                        <li className="hover:underline" key={post._id}>
+                            <Link href={`/stories/${post.slug.current}/`}>
+                                <h2 className="text-xl font-semibold">{post.title}</h2>
+                                <p>{new Date(post.publishedAt).toLocaleDateString()}</p>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </main>
+        );
+    } catch (error) {
+        console.error("Failed to fetch posts:", error);
+        return (
+            <main className="container mx-auto min-h-screen max-w-3xl p-8">
+                Failed to load posts.
+            </main>
+        );
+    }
 }

@@ -1,48 +1,70 @@
-import { blogPosts } from "@/data";
-import { marked } from 'marked';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+// app/stories/[slug]/page.js
 
+// 1. Let Next.js know this route should use the Edge runtime
 export const runtime = "edge";
 
-export default function BlogPost({ params }) {
-    const post = blogPosts.find((post) => post.slug === params.slug);
+// (Optional) You can specify revalidation here,
+// Next.js will attempt to cache at the edge.
+export const revalidate = 60;
 
-    if (!post) {
-        return <div>Post not found</div>;
-    }
+import { PortableText } from "next-sanity";
+import imageUrlBuilder from "@sanity/image-url";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { client } from "@/sanity/client";
 
-    // Convert Markdown to HTML using `marked`
-    const contentHtml = marked(post.content);
+const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
-    // Custom renderer for syntax highlighting
-    const renderers = {
-        code({ node, inline, className, children, ...props }) {
-            const match = /language-(\w+)/.exec(className || '');
-            return !inline && match ? (
-                <SyntaxHighlighter
-                    style={vscDarkPlus}
-                    language={match[1]}
-                    PreTag="div"
-                    {...props}
-                >
-                    {String(children).replace(/\n$/, '')}
-                </SyntaxHighlighter>
-            ) : (
-                <code className={className} {...props}>
-                    {children}
-                </code>
-            );
+const { projectId, dataset } = client.config();
+const urlFor = (source) =>
+    projectId && dataset
+        ? imageUrlBuilder({ projectId, dataset }).image(source)
+        : null;
+
+export default async function PostPage({ params }) {
+    const { slug } = params;
+
+    try {
+        const post = await client.fetch(POST_QUERY, { slug });
+        if (!post) {
+            notFound();
         }
-    };
 
-    return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-            <div
-                className="text-gray-700 leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: contentHtml }}
-            />
-        </div>
-    );
+        const postImageUrl = post.image
+            ? urlFor(post.image)?.width(550).height(310).url()
+            : null;
+
+        return (
+            <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
+                <Link href="/stories" className="hover:underline">
+                    ← Back to posts
+                </Link>
+
+                {postImageUrl && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                        src={postImageUrl}
+                        alt={post.title}
+                        className="aspect-video rounded-xl"
+                        width="550"
+                        height="310"
+                    />
+                )}
+
+                <h1 className="text-4xl font-bold mb-8">{post.title}</h1>
+
+                <div className="prose">
+                    <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p>
+                    {Array.isArray(post.body) && <PortableText value={post.body} />}
+                </div>
+            </main>
+        );
+    } catch (error) {
+        console.error("Failed to fetch post:", error);
+        return (
+            <main className="container mx-auto min-h-screen max-w-3xl p-8">
+                Failed to load post.
+            </main>
+        );
+    }
 }
