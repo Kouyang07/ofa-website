@@ -35,8 +35,8 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
 
 const urlFor = (source) =>
     imageUrlBuilder({
-        projectId: process.env.SANITY_PROJECT_ID,
-        dataset: process.env.SANITY_DATASET,
+        projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+        dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
     }).image(source);
 
 const components = {
@@ -76,7 +76,7 @@ const components = {
 export default async function PostPage({ params }) {
     const { slug } = await params;
 
-    if (!process.env.SANITY_PROJECT_ID || !process.env.SANITY_DATASET) {
+    if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || !process.env.NEXT_PUBLIC_SANITY_DATASET) {
         console.error("Sanity environment variables not configured");
         return <ErrorFallback />;
     }
