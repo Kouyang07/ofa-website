@@ -43,12 +43,23 @@ const Navbar = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 h-full">
                 <div className="relative flex items-center justify-between h-full">
                     {/* Logo */}
-                    <div className="absolute left-0">
-                        <Link href="/">
-                            <Image className="rounded" src="/horizontal-logo.png" alt="Logo" width={200} height={0} />
+                    <div className="absolute left-0" style={{ width: 'clamp(100px, 25vw, 200px)' }}>
+                        <Link href="/" className="block w-full h-full">
+                            <Image
+                                className="rounded w-full h-auto object-contain"
+                                src="/horizontal-logo.png"
+                                alt="Logo"
+                                width={352} // Original width
+                                height={97} // Original height
+                                sizes="(max-width: 320px) 100px, (max-width: 640px) 120px, (max-width: 1024px) 150px, 200px"
+                                style={{
+                                    aspectRatio: '352 / 97' // Maintain original aspect ratio
+                                }}
+                            />
                         </Link>
                     </div>
 
+                    {/* Rest of the navbar remains the same */}
                     {/* Centered Navigation */}
                     <div className="flex-grow flex justify-center">
                         {/* Desktop Menu */}

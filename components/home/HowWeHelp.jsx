@@ -1,73 +1,88 @@
 const HowWeHelp = () => {
+    const services = [
+        {
+            title: "Elder Stories",
+            desc: "We share elder stories to celebrate their wisdom and create meaningful connections across generations.",
+            img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80",
+            color: "from-purple-100 to-purple-50"
+        },
+        {
+            title: "Awareness",
+            desc: "Raising awareness about elderly challenges through social media engagement.",
+            img: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80",
+            color: "from-blue-100 to-blue-50",
+            reverse: true
+        },
+        {
+            title: "Community Events",
+            desc: "Creating opportunities for socialization and celebration.",
+            img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80",
+            color: "from-green-100 to-green-50"
+        }
+    ];
+
     return (
-        <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-                <h2 className="text-6xl font-bold text-red-600 mb-12 text-center">
+                <h2 className="text-5xl font-bold text-red-600 mb-16 text-center relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-32 after:h-1 after:bg-green-500">
                     How We Help
                 </h2>
-                <div className="flex flex-col space-y-12">
-                    {/* Companionship Section */}
-                    <div className="flex flex-col md:flex-row items-center gap-8">
-                        <div className="w-full md:w-1/2">
-                            <img
-                                src="https://via.placeholder.com/500x300"
-                                alt="Companionship"
-                                className="rounded-lg shadow-lg"
-                            />
+                <div className="space-y-20">
+                    {services.map((service, index) => (
+                        <div key={index} className={`flex flex-col md:flex-row ${service.reverse ? 'md:flex-row-reverse' : ''} items-center gap-8 group`}>
+                            <div className="w-full md:w-1/2 relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300">
+                                <img
+                                    src={service.img}
+                                    alt={service.title}
+                                    className="w-full h-96 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                                />
+                                {/* Removed the gradient overlay div here */}
+                            </div>
+                            <div className="w-full md:w-1/2 space-y-6">
+                                <h3 className="text-4xl font-bold text-green-600 mb-4">{service.title}</h3>
+                                <p className="text-gray-700 text-xl leading-relaxed">{service.desc}</p>
+                                <ul className="list-disc list-inside text-gray-600 space-y-2">
+                                    {service.title === "Elder Stories" && <>
+                                        <li>Oral storytelling sessions</li>
+                                        <li>Intergenerational story exchanges</li>
+                                        <li>Legacy preservation projects</li>
+                                        <li>Community storybooks</li>
+                                    </>}
+                                    {service.title === "Awareness" && <>
+                                        <li>Instagram campaigns (@onefourall2024)</li>
+                                        <li>Impactful story highlights</li>
+                                        <li>Collaborations with influencers</li>
+                                        <li>Educational infographics</li>
+                                    </>}
+                                    {service.title === "Community Events" && <>
+                                        <li>Cultural celebrations</li>
+                                        <li>Holiday gatherings</li>
+                                        <li>Skill-sharing workshops</li>
+                                    </>}
+                                </ul>
+                            </div>
                         </div>
-                        <div className="w-full md:w-1/2">
-                            <h3 className="text-4xl font-semibold text-green-600 mb-4">Companionship</h3>
-                            <p className="text-gray-700 text-lg">
-                                We provide friendly visits and engaging activities to combat loneliness. Our volunteers spend quality time with elders, ensuring they feel valued and connected.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Health & Wellness Section */}
-                    <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-                        <div className="w-full md:w-1/2">
-                            <img
-                                src="https://via.placeholder.com/500x300"
-                                alt="Health & Wellness"
-                                className="rounded-lg shadow-lg"
-                            />
-                        </div>
-                        <div className="w-full md:w-1/2">
-                            <h3 className="text-4xl font-semibold text-green-600 mb-4">Health & Wellness</h3>
-                            <p className="text-gray-700 text-lg">
-                                We promote physical and mental well-being through tailored programs. From yoga classes to mental health workshops, we ensure our elders stay active and healthy.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Community Events Section */}
-                    <div className="flex flex-col md:flex-row items-center gap-8">
-                        <div className="w-full md:w-1/2">
-                            <img
-                                src="https://via.placeholder.com/500x300"
-                                alt="Community Events"
-                                className="rounded-lg shadow-lg"
-                            />
-                        </div>
-                        <div className="w-full md:w-1/2">
-                            <h3 className="text-4xl font-semibold text-green-600 mb-4">Community Events</h3>
-                            <p className="text-gray-700 text-lg">
-                                We host gatherings to foster connections and celebrate life. From holiday parties to cultural events, we create opportunities for elders to socialize and enjoy life.
-                            </p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
 
-                {/* CTA Section */}
+                {/* Updated CTA Section */}
                 <div className="mt-16 text-center">
                     <p className="text-gray-700 text-xl mb-6">
-                        Want to learn more about what we do? Visit our blog for in-depth articles and stories.
+                        Follow us on Instagram for daily updates and stories: {" "}
+                        <a
+                            href="https://instagram.com/onefourall2024"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-green-600 hover:text-green-700 font-semibold"
+                        >
+                            @onefourall2024
+                        </a>
                     </p>
                     <a
                         href="/blog"
                         className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition-colors"
                     >
-                        Visit Our Blog
+                        Explore All Stories
                     </a>
                 </div>
             </div>

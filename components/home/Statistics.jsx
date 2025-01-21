@@ -1,42 +1,86 @@
 import React from 'react';
 
 const Statistics = () => {
+    const stats = [
+        {
+            value: "1 in 3",
+            label: "Elderly Experience Clinical Depression",
+            subtext: "Nursing home residents with significant depressive symptoms",
+            icon: (
+                <svg className="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            )
+        },
+        {
+            value: "50%+",
+            label: "Undiagnosed Cases",
+            subtext: "Depression cases remaining unrecognized in care facilities",
+            icon: (
+                <svg className="w-16 h-16 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            )
+        },
+        {
+            value: "$140k",
+            label: "Annual Care Costs",
+            subtext: "Average nursing home expenses per resident",
+            icon: (
+                <svg className="w-16 h-16 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            )
+        },
+        {
+            value: "42.9%",
+            label: "Treatment Gap",
+            subtext: "Diagnosed residents not receiving adequate care",
+            icon: (
+                <svg className="w-16 h-16 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            )
+        }
+    ];
+
     return (
         <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto text-center">
-                <h2 className="text-6xl font-bold text-red-600 mb-12">
-                    The Problem We Address
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {/* Statistic 1: Loneliness */}
-                    <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
-                        <h3 className="text-5xl font-bold text-green-600 mb-4">1 in 3</h3>
-                        <p className="text-xl text-gray-700">nursing home residents experience clinically significant depression.</p>
-                    </div>
-
-                    {/* Statistic 2: Isolation */}
-                    <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
-                        <h3 className="text-5xl font-bold text-green-600 mb-4">50+%</h3>
-                        <p className="text-xl text-gray-700">cases of depression in nursing homes go unrecognized.</p>
-                    </div>
-
-                    {/* Statistic 3: Mental Health */}
-                    <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
-                        <h3 className="text-5xl font-bold text-green-600 mb-4">$140,000</h3>
-                        <p className="text-xl text-gray-700">needed for a year of nursing home</p>
-                    </div>
-
-                    {/* Statistic 4: Lack of Support */}
-                    <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
-                        <h3 className="text-5xl font-bold text-green-600 mb-4">42.9%</h3>
-                        <p className="text-xl text-gray-700">of depressed nursing home residents are diagnosed, and fewer receive treatment.</p>
-                    </div>
-                </div>
-                {/* CTA Section */}
-                <div className="mt-12">
-                    <p className="text-gray-700 mb-4">
-                        Together, we can make a difference. Join us in addressing these challenges.
+            <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                        Critical Challenges in Elder Care
+                    </h2>
+                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Data reveals systemic issues requiring urgent attention and collective action
                     </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {stats.map((stat, index) => (
+                        <div key={index} className="bg-white p-8 rounded-xl border border-gray-100 hover:border-blue-100 transition-all duration-300 shadow-sm hover:shadow-lg">
+                            <div className="mb-6 flex items-center justify-center h-24">
+                                {stat.icon}
+                            </div>
+                            <div className="text-center">
+                            <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
+                                <h3 className="text-xl font-semibold text-gray-800 mb-2">{stat.label}</h3>
+                                <p className="text-gray-600 text-base leading-relaxed">{stat.subtext}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="mt-12 text-center">
+                    <p className="text-gray-600 mb-4">
+                        Source: National Institute of Mental Health (2023 Report)
+                    </p>
+                    <a
+                        href="/sources"
+                        className="inline-block text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                    >
+                        View Full Research Documentation →
+                    </a>
                 </div>
             </div>
         </section>
