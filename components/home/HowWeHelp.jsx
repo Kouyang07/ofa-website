@@ -2,7 +2,7 @@ const HowWeHelp = () => {
     const services = [
         {
             title: "Elder Stories",
-            desc: "We share elder stories to celebrate their wisdom and create meaningful connections across generations.",
+            desc: "We share elder blogs to celebrate their wisdom and create meaningful connections across generations.",
             img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80",
             color: "from-purple-100 to-purple-50"
         },

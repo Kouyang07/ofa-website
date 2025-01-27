@@ -8,9 +8,8 @@ import imageUrlBuilder from "@sanity/image-url";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { client } from "@/sanity/client";
-import { revalidateTag } from "next/cache";
 
-const POST_QUERY = `*[_type == "story" && slug.current == $slug][0]{
+const POST_QUERY = `*[_type == "blog" && slug.current == $slug][0]{
   _id,
   title,
   slug,
@@ -83,15 +82,8 @@ export default async function PostPage({ params }) {
     }
 
     try {
-        let post = await client.fetch(POST_QUERY, { slug });
-
-        if (!post?.slug?.current) {
-            // Revalidate the cache for this post
-            revalidateTag(`post-${slug}`);
-            // Retry fetching the data
-            post = await client.fetch(POST_QUERY, { slug });
-            if (!post?.slug?.current) notFound();
-        }
+        const post = await client.fetch(POST_QUERY, { slug });
+        if (!post?.slug?.current) notFound();
 
         const featuredImageUrl = post.mainImage
             ? urlFor(post.mainImage).width(1200).height(675).quality(85).url()

@@ -16,7 +16,7 @@ const StoryHighlights = () => {
         },
         {
             title: "Maria's Legacy",
-            desc: "Preserving stories for future generations",
+            desc: "Preserving blogs for future generations",
             img: "https://images.unsplash.com/photo-1586082588577-d38a47f49f5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=400&q=80",
             slug: "/story/maria"
         }

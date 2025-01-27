@@ -7,7 +7,7 @@ const FETCH_TIMEOUT = 8000; // 8 seconds timeout
 
 // Simplified query with only essential fields
 const POSTS_QUERY = `*[
-  _type == "story" && defined(slug.current)
+  _type == "blog" && defined(slug.current)
 ]|order(publishedAt desc)[0...12]{
   _id, 
   title, 
@@ -53,10 +53,10 @@ export default async function IndexPage() {
                     <div className="text-center p-8 max-w-2xl">
                         <div className="text-blue-600 mb-4 text-5xl">📭</div>
                         <h2 className="text-3xl font-semibold text-slate-900 mb-4">
-                            No Posts Found
+                            No Blogs Found
                         </h2>
                         <p className="text-slate-600 text-lg mb-6">
-                            It looks like there are no stories available at the moment. Please check back later.
+                            It looks like there are no blogs available at the moment. Please check back later.
                         </p>
                         <button
                             onClick={() => window.location.reload()}
@@ -74,10 +74,10 @@ export default async function IndexPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-3xl mx-auto text-center mb-16">
                         <h1 className="text-5xl font-bold text-slate-900 mb-4 font-serif tracking-tight">
-                            Stories & Narratives
+                            Blogs & Insights
                         </h1>
                         <p className="text-lg text-slate-600">
-                            Condensed wisdom and experiences shared by our community
+                            Our perspectives on current trends and issues
                         </p>
                     </div>
 
