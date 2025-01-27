@@ -88,7 +88,7 @@ export default async function IndexPage() {
                                 className="bg-white rounded-xl shadow-sm overflow-hidden"
                             >
                                 <Link
-                                    href={`/blogs/${post.slug?.current}/`}
+                                    href={`/stories/${post.slug?.current}/`}
                                     className="block h-full"
                                 >
                                     {post.mainImageUrl && (

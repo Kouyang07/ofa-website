@@ -3,21 +3,18 @@ const HowWeHelp = () => {
         {
             title: "Elder Stories",
             desc: "We share elder blogs to celebrate their wisdom and create meaningful connections across generations.",
-            img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80",
-            color: "from-purple-100 to-purple-50"
+            img: "/howwehelp/instagram.png"
         },
         {
             title: "Awareness",
             desc: "Raising awareness about elderly challenges through social media engagement.",
-            img: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80",
-            color: "from-blue-100 to-blue-50",
+            img: "/howwehelp/awareness.png",
             reverse: true
         },
         {
             title: "Community Events",
             desc: "Creating opportunities for socialization and celebration.",
-            img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80",
-            color: "from-green-100 to-green-50"
+            img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80"
         }
     ];
 
@@ -79,10 +76,10 @@ const HowWeHelp = () => {
                         </a>
                     </p>
                     <a
-                        href="/blog"
+                        href="/blogs"
                         className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition-colors"
                     >
-                        Explore All Stories
+                        Explore All Blogs
                     </a>
                 </div>
             </div>
