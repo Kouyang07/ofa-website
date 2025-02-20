@@ -2,13 +2,13 @@ const HowWeHelp = () => {
     const services = [
         {
             title: "Elder Stories",
-            desc: "We share elder blogs to celebrate their wisdom and create meaningful connections across generations.",
-            img: "/howwehelp/instagram.png"
+            desc: "We share elder stories to celebrate their wisdom, preserve their legacy, and create meaningful connections across generations. These stories provide insight, inspiration, and a deeper appreciation for the rich experiences of our elderly community.",
+            img: "null"
         },
         {
             title: "Awareness",
-            desc: "Raising awareness about elderly challenges through social media engagement.",
-            img: "/howwehelp/awareness.png",
+            desc: "We raise awareness about the challenges and needs of the elderly by utilizing social media platforms like Instagram (@onefourall2024). Through thoughtful posts, impactful stories, and actionable content, we inspire others to understand, engage with, and support the elderly population.",
+            img: "/howwehelp/instagram.png",
             reverse: true
         },
         {

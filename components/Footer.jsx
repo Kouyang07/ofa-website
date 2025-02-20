@@ -82,9 +82,7 @@ const Footer = () => {
                     {/* Contact Information */}
                     <div className="flex flex-col items-center md:items-start">
                         <h3 className="font-bold mb-4">Contact Us</h3>
-                        <p className="text-sm">123 Main Street</p>
-                        <p className="text-sm">City, State, ZIP</p>
-                        <p className="text-sm">Phone: (123) 456-7890</p>
+                        <p className="text-sm">Phone: +1 (516) 838-2550</p>
                         <p className="text-sm">Email: info@example.com</p>
                     </div>
 
@@ -117,7 +115,7 @@ const Footer = () => {
                         )}
                         <div className="flex justify-center space-x-4 mt-4">
                             <a
-                                href="https://www.instagram.com/one_4_all_2024/"
+                                href="https://www.instagram.com/onefourall2024/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-white text-xl hover:text-green-700 transition duration-300"

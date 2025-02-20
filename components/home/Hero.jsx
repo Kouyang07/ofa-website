@@ -3,7 +3,15 @@ import React from "react";
 
 const Hero = () => {
     return (
-        <section className="bg-gradient-to-br from-blue-500 to-blue-600 relative overflow-hidden h-screen flex items-center justify-center">
+        <section className="relative overflow-hidden h-[75vh] flex items-center justify-center">
+            <Image
+                src="/hero.png"
+                alt="Background Image"
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                className="absolute inset-0 z-0"
+            />
             <div className="absolute inset-0 bg-opacity-20 bg-black" />
             <div className="container mx-auto px-6 text-center relative z-10">
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 md:mb-6 leading-tight animate-fade-in-down">

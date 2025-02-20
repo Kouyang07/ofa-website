@@ -11,7 +11,8 @@ export default function Home() {
             <Mission />
             <Statistics />
             <HowWeHelp />
-            <StoryHighlights />
+            {//<StoryHighlights />
+            }
         </div>
     );
 }
