@@ -1,71 +1,128 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const HowWeHelp = () => {
     const services = [
         {
             title: "Elder Stories",
-            desc: "We share elder stories to celebrate their wisdom, preserve their legacy, and create meaningful connections across generations. These stories provide insight, inspiration, and a deeper appreciation for the rich experiences of our elderly community.",
-            img: "null"
+            desc: "We celebrate elder wisdom by preserving their legacy and fostering intergenerational connections. These stories provide insight, inspiration, and a deeper appreciation for the rich experiences of our elderly community.",
+            img: "/howwehelp/stories.png",
+            highlights: [
+                "Oral storytelling sessions",
+                "Intergenerational story exchanges",
+                "Legacy preservation projects",
+                "Community storybooks"
+            ]
         },
         {
             title: "Awareness",
-            desc: "We raise awareness about the challenges and needs of the elderly by utilizing social media platforms like Instagram (@onefourall2024). Through thoughtful posts, impactful stories, and actionable content, we inspire others to understand, engage with, and support the elderly population.",
+            desc: "We raise awareness about the challenges and needs of the elderly through digital storytelling and impactful social media initiatives. Follow us on Instagram for engaging campaigns that educate and inspire action.",
             img: "/howwehelp/instagram.png",
-            reverse: true
+            highlights: [
+                "Instagram campaigns (@onefourall2024)",
+                "Impactful story highlights",
+                "Collaborations with influencers",
+                "Educational infographics"
+            ]
         },
         {
             title: "Community Events",
-            desc: "Creating opportunities for socialization and celebration.",
-            img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=300&q=80"
+            desc: "Bringing people together through meaningful interactions. Our events create opportunities for socialization, cultural exchange, and lifelong learning.",
+            img: "/howwehelp/group.jpg",
+            highlights: [
+                "Cultural celebrations",
+                "Holiday gatherings",
+                "Skill-sharing workshops"
+            ]
         }
     ];
 
     return (
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-                <h2 className="text-5xl font-bold text-red-600 mb-16 text-center relative pb-4 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-32 after:h-1 after:bg-green-500">
+        <section className="py-24 px-6 sm:px-10 lg:px-16 bg-gray-50">
+            <div className="max-w-7xl mx-auto">
+                <motion.h2
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="text-5xl font-bold text-gray-900 text-center mb-20 relative pb-4 before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-24 before:h-1 before:bg-green-500"
+                >
                     How We Help
-                </h2>
-                <div className="space-y-20">
+                </motion.h2>
+
+                <div className="space-y-32">
                     {services.map((service, index) => (
-                        <div key={index} className={`flex flex-col md:flex-row ${service.reverse ? 'md:flex-row-reverse' : ''} items-center gap-8 group`}>
-                            <div className="w-full md:w-1/2 relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300">
-                                <img
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className={`relative flex flex-col md:flex-row items-center ${
+                                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                            }`}
+                        >
+                            {/* Image Container with Hover Effect */}
+                            <motion.div
+                                className="w-full md:w-1/2 relative group overflow-hidden rounded-xl shadow-xl"
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <motion.img
                                     src={service.img}
+                                    quality={80}
                                     alt={service.title}
-                                    className="w-full h-96 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                                    className="w-full h-96 object-cover transform transition-all duration-500"
+                                    initial={{ scale: 1 }}
+                                    whileHover={{ scale: 1.1 }}
                                 />
-                                {/* Removed the gradient overlay div here */}
-                            </div>
-                            <div className="w-full md:w-1/2 space-y-6">
-                                <h3 className="text-4xl font-bold text-green-600 mb-4">{service.title}</h3>
-                                <p className="text-gray-700 text-xl leading-relaxed">{service.desc}</p>
-                                <ul className="list-disc list-inside text-gray-600 space-y-2">
-                                    {service.title === "Elder Stories" && <>
-                                        <li>Oral storytelling sessions</li>
-                                        <li>Intergenerational story exchanges</li>
-                                        <li>Legacy preservation projects</li>
-                                        <li>Community storybooks</li>
-                                    </>}
-                                    {service.title === "Awareness" && <>
-                                        <li>Instagram campaigns (@onefourall2024)</li>
-                                        <li>Impactful story highlights</li>
-                                        <li>Collaborations with influencers</li>
-                                        <li>Educational infographics</li>
-                                    </>}
-                                    {service.title === "Community Events" && <>
-                                        <li>Cultural celebrations</li>
-                                        <li>Holiday gatherings</li>
-                                        <li>Skill-sharing workshops</li>
-                                    </>}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-75 group-hover:opacity-50 transition-opacity"></div>
+                            </motion.div>
+
+                            {/* Content Container */}
+                            <motion.div
+                                className="w-full md:w-1/2 px-6 md:px-12"
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                            >
+                                <h3 className="text-4xl font-semibold text-green-600 mb-6 tracking-tight">
+                                    {service.title}
+                                </h3>
+                                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                                    {service.desc}
+                                </p>
+                                <ul className="text-gray-600 space-y-2">
+                                    {service.highlights.map((highlight, i) => (
+                                        <motion.li
+                                            key={i}
+                                            className="flex items-start space-x-3"
+                                            initial={{ opacity: 0, x: -20 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.5, delay: 0.2 * i }}
+                                        >
+                                            <span className="text-green-500 text-lg">●</span>
+                                            <span>{highlight}</span>
+                                        </motion.li>
+                                    ))}
                                 </ul>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     ))}
                 </div>
 
-                {/* Updated CTA Section */}
-                <div className="mt-16 text-center">
-                    <p className="text-gray-700 text-xl mb-6">
-                        Follow us on Instagram for daily updates and stories: {" "}
+                {/* CTA Section */}
+                <motion.div
+                    className="mt-20 text-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                    <p className="text-lg text-gray-700 mb-6">
+                        Follow us for daily updates and stories:{" "}
                         <a
                             href="https://instagram.com/onefourall2024"
                             target="_blank"
@@ -75,13 +132,15 @@ const HowWeHelp = () => {
                             @onefourall2024
                         </a>
                     </p>
-                    <a
+                    <motion.a
                         href="/blogs"
-                        className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition-colors"
+                        className="inline-block bg-green-600 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-2xl transform"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         Explore All Blogs
-                    </a>
-                </div>
+                    </motion.a>
+                </motion.div>
             </div>
         </section>
     );

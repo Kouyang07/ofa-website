@@ -83,14 +83,14 @@ const Footer = () => {
                     <div className="flex flex-col items-center md:items-start">
                         <h3 className="font-bold mb-4">Contact Us</h3>
                         <p className="text-sm">Phone: +1 (516) 838-2550</p>
-                        <p className="text-sm">Email: info@example.com</p>
+                        <p className="text-sm">Email: andazcyrus9@gmail.com</p>
                     </div>
 
                     {/* Email Sign-up Form and Social Media Icons */}
                     <div className="flex flex-col items-center md:items-start">
-                        <h3 className="font-bold">Stay Connected</h3>
-                        <p>Don't worry, we won't spam with random nonsense</p>
-                        <form onSubmit={handleSubmit} className="mb-4">
+                        <h3 className="font-bold mb-4">Stay Connected</h3>
+                        <p className="mb-4">Don't worry, we won't spam with random nonsense</p>
+                        <form onSubmit={handleSubmit}>
                             <input
                                 type="email"
                                 placeholder="Enter your email"
