@@ -1,18 +1,17 @@
-// pages/aboutus.jsx
+// pages/aboutus.js
 import Image from 'next/image';
 
+const defaultImage = '/aboutus/default-profile.jpg'; // Default image path
+
 const boardMembers = [
-    { name: 'Kaicheng Ouyang', title: 'Co-Founder', image: '/images/john.jpg' },
-    { name: 'Cyrus Andaz', title: 'Co-Founder', image: '/images/jane.jpg' },
+    { name: 'Kaicheng Ouyang', title: 'Co-Founder', image: '/aboutus/peter.png' },
+    { name: 'Cyrus Andaz', title: 'Co-Founder', image: '/aboutus/cyrus.png' },
 ];
 
 const members = [
-    { name: 'Alice Johnson', title: 'Member', image: '/images/alice.jpg' },
-    { name: 'Bob Brown', title: 'Member', image: '/images/bob.jpg' },
-    { name: 'Carlos Rivera', title: 'Member', image: '/images/carlos.jpg' },
-    { name: 'Emily Davis', title: 'Member', image: '/images/emily.jpg' },
-    { name: 'Frank Williams', title: 'Member', image: '/images/frank.jpg' },
-    { name: 'Grace Lee', title: 'Member', image: '/images/grace.jpg' },
+    { name: 'Aaron George', title: 'Writer'},
+    { name: 'Justin Zheng', title: 'Writer'},
+    { name: 'Ayden Wuennemann', title: 'Media'}, // No image provided
 ];
 
 export default function AboutUs() {
@@ -43,11 +42,12 @@ export default function AboutUs() {
                         >
                             <div className="w-40 h-40 rounded-full overflow-hidden mb-4">
                                 <Image
-                                    src={person.image}
+                                    src={person.image || defaultImage}
                                     alt={person.name}
                                     width={160}
                                     height={160}
                                     className="object-cover"
+                                    style={{ objectPosition: "center" }}
                                 />
                             </div>
                             <h3 className="text-xl font-medium">{person.name}</h3>
@@ -68,13 +68,14 @@ export default function AboutUs() {
                             key={index}
                             className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg hover:bg-gray-200 transition"
                         >
-                            <div className="w-32 h-32 rounded-full overflow-hidden mb-4">
+                            <div className="w-40 h-40 aspect-square rounded-full overflow-hidden">
                                 <Image
-                                    src={person.image}
+                                    src={person.image ? person.image : defaultImage}
                                     alt={person.name}
-                                    width={128}
-                                    height={128}
+                                    width={160}
+                                    height={160}
                                     className="object-cover"
+                                    style={{ objectPosition: "center" }}
                                 />
                             </div>
                             <h3 className="text-lg font-medium">{person.name}</h3>
