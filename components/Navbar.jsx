@@ -97,7 +97,7 @@ const Navbar = () => {
                                 {navItems.map((item) => (
                                     <Link
                                         key={item}
-                                        href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                                        href={item === 'Home' ? '/' : `/${item.toLowerCase().replaceAll(" ", "")}`}
                                         className="block py-2 px-4 w-full text-center text-gray-800 hover:bg-gray-100 hover:text-green-600"
                                     >
                                         {item}
