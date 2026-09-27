@@ -72,6 +72,11 @@ const Footer = () => {
                                 </Link>
                             </li>
                             <li>
+                                <Link href="/partnerships" className="hover:text-gray-400">
+                                    Partnerships
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/blog" className="hover:text-gray-400">
                                     Blog
                                 </Link>
@@ -84,6 +89,14 @@ const Footer = () => {
                         <h3 className="font-bold mb-4">Contact Us</h3>
                         <p className="text-sm">Phone: +1 (516) 838-2550</p>
                         <p className="text-sm">Email: andazcyrus9@gmail.com</p>
+
+                        <h3 className="font-bold mt-6 mb-2">Our Partners</h3>
+                        <Link href="/partnerships" className="text-sm hover:text-gray-400">
+                            The Sinclair at Port Washington
+                        </Link>
+                        <Link href="/partnerships" className="text-sm hover:text-gray-400">
+                            Superior Sports
+                        </Link>
                     </div>
 
                     {/* Email Sign-up Form and Social Media Icons */}

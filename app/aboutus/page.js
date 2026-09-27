@@ -3,16 +3,35 @@ import Image from 'next/image';
 
 const defaultImage = '/aboutus/default-profile.jpg'; // Default image path
 
-const boardMembers = [
-    { name: 'Kaicheng Ouyang', title: 'Co-Founder', image: '/aboutus/peter.png' },
-    { name: 'Cyrus Andaz', title: 'Co-Founder', image: '/aboutus/cyrus.png' },
+const director = { name: 'Cyrus Andaz', title: 'Co-Founder & Director of Operations (CEO)', image: '/aboutus/cyrus.png' };
+
+const presidents = [
+    { name: 'Liel Agajan', title: 'Co-President', image: '/aboutus/liel.jpg' },
+    { name: 'John Barton', title: 'Co-President', image: '/aboutus/john.jpg' },
 ];
 
-const members = [
-    { name: 'Aaron George', title: 'Writer'},
-    { name: 'Justin Zheng', title: 'Writer'},
-    { name: 'Ayden Wuennemann', title: 'Media'}, // No image provided
+const founders = [
+    { name: 'Kaicheng Ouyang', title: 'Co-Founder', image: '/aboutus/peter.png' },
 ];
+
+function PersonCard({ person }) {
+    return (
+        <div className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg hover:bg-gray-200 transition">
+            <div className="w-40 h-40 rounded-full overflow-hidden mb-4">
+                <Image
+                    src={person.image || defaultImage}
+                    alt={person.name}
+                    width={160}
+                    height={160}
+                    className="object-cover w-full h-full"
+                    style={{ objectPosition: "center" }}
+                />
+            </div>
+            <h3 className="text-xl font-medium">{person.name}</h3>
+            <p className="text-sm text-green-600 font-semibold">{person.title}</p>
+        </div>
+    );
+}
 
 export default function AboutUs() {
     return (
@@ -29,58 +48,36 @@ export default function AboutUs() {
                 </p>
             </section>
 
-            {/* Board Members Section */}
+            {/* Director */}
             <section className="mb-16">
                 <h2 className="text-3xl font-semibold text-center mb-8">
-                    <span className="text-blue-500">Board</span>
+                    <span className="text-blue-500">Director</span>
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    {boardMembers.map((person, index) => (
-                        <div
-                            key={index}
-                            className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg hover:bg-gray-200 transition"
-                        >
-                            <div className="w-40 h-40 rounded-full overflow-hidden mb-4">
-                                <Image
-                                    src={person.image || defaultImage}
-                                    alt={person.name}
-                                    width={160}
-                                    height={160}
-                                    className="object-cover"
-                                    style={{ objectPosition: "center" }}
-                                />
-                            </div>
-                            <h3 className="text-xl font-medium">{person.name}</h3>
-                            <p className="text-sm text-green-600 font-semibold">{person.title}</p>
-                        </div>
+                <div className="max-w-xs mx-auto">
+                    <PersonCard person={director} />
+                </div>
+            </section>
+
+            {/* Presidents */}
+            <section className="mb-16">
+                <h2 className="text-3xl font-semibold text-center mb-8">
+                    <span className="text-blue-500">Presidents</span>
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                    {presidents.map((person) => (
+                        <PersonCard key={person.name} person={person} />
                     ))}
                 </div>
             </section>
 
-            {/* Members Section */}
-            <section>
+            {/* Founders */}
+            <section className="">
                 <h2 className="text-3xl font-semibold text-center mb-8">
-                    <span className="text-blue-500">Members</span>
+                    <span className="text-blue-500">Founders</span>
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    {members.map((person, index) => (
-                        <div
-                            key={index}
-                            className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-lg hover:bg-gray-200 transition"
-                        >
-                            <div className="w-40 h-40 aspect-square rounded-full overflow-hidden">
-                                <Image
-                                    src={person.image ? person.image : defaultImage}
-                                    alt={person.name}
-                                    width={160}
-                                    height={160}
-                                    className="object-cover"
-                                    style={{ objectPosition: "center" }}
-                                />
-                            </div>
-                            <h3 className="text-lg font-medium">{person.name}</h3>
-                            <p className="text-sm text-green-600 font-semibold">{person.title}</p>
-                        </div>
+                <div className="max-w-xs mx-auto">
+                    {founders.map((person) => (
+                        <PersonCard key={person.name} person={person} />
                     ))}
                 </div>
             </section>

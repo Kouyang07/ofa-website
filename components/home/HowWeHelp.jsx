@@ -5,14 +5,13 @@ import { motion } from "framer-motion";
 const HowWeHelp = () => {
     const services = [
         {
-            title: "Elder Stories",
-            desc: "We celebrate elder wisdom by preserving their legacy and fostering intergenerational connections. These stories provide insight, inspiration, and a deeper appreciation for the rich experiences of our elderly community.",
-            img: "/howwehelp/stories.png",
+            title: "Community Events",
+            desc: "Bringing people together through meaningful interactions. Our events create opportunities for socialization, cultural exchange, and lifelong learning.",
+            img: "/howwehelp/community-events.jpg",
             highlights: [
-                "Oral storytelling sessions",
-                "Intergenerational story exchanges",
-                "Legacy preservation projects",
-                "Community storybooks"
+                "Cultural celebrations",
+                "Holiday gatherings",
+                "Skill-sharing workshops"
             ]
         },
         {
@@ -27,13 +26,14 @@ const HowWeHelp = () => {
             ]
         },
         {
-            title: "Community Events",
-            desc: "Bringing people together through meaningful interactions. Our events create opportunities for socialization, cultural exchange, and lifelong learning.",
-            img: "/howwehelp/group.jpg",
+            title: "Elder Stories",
+            desc: "We celebrate elder wisdom by preserving their legacy and fostering intergenerational connections. These stories provide insight, inspiration, and a deeper appreciation for the rich experiences of our elderly community.",
+            img: "/howwehelp/stories.png",
             highlights: [
-                "Cultural celebrations",
-                "Holiday gatherings",
-                "Skill-sharing workshops"
+                "Oral storytelling sessions",
+                "Intergenerational story exchanges",
+                "Legacy preservation projects",
+                "Community storybooks"
             ]
         }
     ];

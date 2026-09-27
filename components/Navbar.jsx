@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 const Navbar = () => {
-    const navItems = ['Home', 'Stories', 'Blogs', 'About Us'];
+    const navItems = ['Home', 'Stories', 'Blogs', 'Our Book', 'Partnerships', 'About Us'];
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isNavbarVisible, setIsNavbarVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -63,7 +63,7 @@ const Navbar = () => {
                     {/* Centered Navigation */}
                     <div className="flex-grow flex justify-center">
                         {/* Desktop Menu */}
-                        <div className="hidden lg:flex items-center">
+                        <div className="hidden xl:flex items-center">
                             <ul className="flex space-x-6">
                                 {navItems.map((item) => (
                                     <li key={item}>
@@ -78,7 +78,7 @@ const Navbar = () => {
                             </ul>
                         </div>
                         {/* Mobile Menu Button - Centered */}
-                        <div className="lg:hidden flex justify-center">
+                        <div className="xl:hidden flex justify-center">
                             <button onClick={toggleMobileMenu} className="focus:outline-none text-gray-800 hover:text-green-600">
                                 <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -109,9 +109,14 @@ const Navbar = () => {
 
                     {/* Donate Button */}
                     <div className="absolute right-0">
-                        <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">
+                        <a
+                            href="https://www.zeffy.com/en-US/donation-form/donate-to-support-one4all-mission"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
+                        >
                             Donate
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
